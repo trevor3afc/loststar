@@ -2,9 +2,13 @@
   "name": "loststar",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "nx build",
+    "rebuild": "yarn build && sh ./docker.sh"
+  },
   "private": true,
   "dependencies": {
+    "dotenv": "^16.0.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

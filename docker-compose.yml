@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  star:
+    container_name: star
+    build:
+      context: .
+      dockerfile: ./Dockerfile.star
+    image: star
+    ports:
+      - '3000:3000'
+    restart: always
+
+networks:
+  default:
+    external:
+      name: 'haze-net'
