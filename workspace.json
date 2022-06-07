@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "core-service": "packages/core-service",
+    "data": "packages/data",
     "star": "packages/star"
   }
 }

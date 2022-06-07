@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@loststar/core-service": ["packages/core-service/src/index.ts"]
+      "@loststar/core-service": ["packages/core-service/src/index.ts"],
+      "@loststar/data": ["packages/data/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
