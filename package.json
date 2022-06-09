@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
     "puppeteer": "^14.3.0",
     "puppeteer-screen-recorder": "^2.0.2",
     "puppeteer-stream": "^2.1.1",
