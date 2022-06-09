@@ -39,15 +39,18 @@ export const starMain = async () => {
 
 const playFrames = async () => {
   let play = true;
-  const counter = 0;
+  let counter = 0;
   while (play) {
-    const nextFrame = frames.shift();
+    //const nextFrame = frames.shift();
     counter++;
     console.log({
       counter,
       length: frames.length,
     });
-    play = false;
+
+    if (counter > 20000) {
+      play = false;
+    }
     await sleep({
       ms: 500,
     });
@@ -55,6 +58,7 @@ const playFrames = async () => {
 };
 
 export const runStarLife = async () => {
+  playFrames();
   await starPrepare();
   await testLife();
 
