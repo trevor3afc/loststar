@@ -23,7 +23,7 @@ export const testLife = async () => {
   const pipeStream = new PassThrough();
   await recorder.startStream(pipeStream);
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
-  await page.keyboard.press('k');
+  //await page.keyboard.press('k');
   await sleep({ ms: 20000 });
   await browser.close();
 };
