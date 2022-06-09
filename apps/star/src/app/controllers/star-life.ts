@@ -8,12 +8,12 @@ export const main = async () => {
 
 export const runStarLife = async () => {
   benchmarkStart({
-    label: 'runStarLife',
+    label: 'starLife',
   });
   logger.info('star-life:runLife');
   await sleep({ ms: 3000 });
   benchmarkEnd({
-    label: 'endStarLife',
+    label: 'starLife',
   });
   await runStarLife();
 };
