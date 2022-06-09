@@ -9,7 +9,6 @@ export const sleep = ({ ms }: { ms: number }) => {
 export const looper = async ({ ms }: { ms: number }) => {
   benchmarkStart({ label: 'looper' });
   await sleep({ ms });
-  console.log(`restart`);
   benchmarkEnd({ label: 'looper' });
   await looper({ ms });
 };
