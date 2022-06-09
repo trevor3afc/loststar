@@ -1,5 +1,13 @@
 {
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
-  "projects": {}
+  "projects": {
+    "core--config": "libs/core/config",
+    "core--debug": "libs/core/debug",
+    "helper-logger": "libs/helper/logger",
+    "helper-puppeteer": "libs/helper/puppeteer",
+    "play-station": "apps/play-station",
+    "star": "apps/star",
+    "utils--common": "libs/utils/common"
+  }
 }
