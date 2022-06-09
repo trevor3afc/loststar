@@ -2,12 +2,35 @@ import * as puppeteer from 'puppeteer';
 export function helperPuppeteer(): string {
   return 'helper-puppeteer';
 }
+import {
+  LaunchOptions,
+  BrowserLaunchArgumentOptions,
+  BrowserConnectOptions,
+} from 'puppeteer';
+export interface browserConnectionConfigs
+  extends LaunchOptions,
+    BrowserLaunchArgumentOptions,
+    BrowserConnectOptions {}
 
-export const browserInstance = async ({
+let browser: puppeteer.Browser;
+export const initBrowserInstance = async ({
   config,
 }: {
-  config: puppeteer.BrowserConnectOptions;
+  config: browserConnectionConfigs;
 }) => {
   const browser = await puppeteer.launch(config);
+  return browser;
+};
+
+export const getBrowser = async () => {
+  if (!browser) {
+    browser = await initBrowserInstance({
+      config: {
+        headless: false,
+        slowMo: 100,
+        args: ['--window-size=1920,1080'],
+      },
+    });
+  }
   return browser;
 };

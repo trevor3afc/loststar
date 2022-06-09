@@ -1,4 +1,4 @@
-import { browserConnectionConfigs } from '../types/puppeteer';
+import { browserConnectionConfigs } from '@loststar/helper/puppeteer';
 
 export const browserConfig: browserConnectionConfigs = {
   headless: false,
