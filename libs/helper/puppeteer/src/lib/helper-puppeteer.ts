@@ -1,4 +1,4 @@
-import * as puppeteer from 'puppeteer';
+import puppeteer, { Browser } from 'puppeteer';
 export function helperPuppeteer(): string {
   return 'helper-puppeteer';
 }
@@ -12,7 +12,7 @@ export interface browserConnectionConfigs
     BrowserLaunchArgumentOptions,
     BrowserConnectOptions {}
 
-let browser: puppeteer.Browser;
+let browser: Browser;
 export const initBrowserInstance = async ({
   config,
 }: {
