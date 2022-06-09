@@ -23,7 +23,12 @@ export const testLife = async () => {
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   await page.keyboard.press('k');
   const session = await page.target().createCDPSession();
-  await session.send('Page.startScreencast');
+  await session.send('Page.startScreencast', {
+    format: 'png',
+    maxWidth: 1920,
+    maxHeight: 1080,
+  });
+
   session.on('Page.screencastFrame', (event) => {
     event.data; // Base64 encoded frame
     console.log(`push:event.data.length:${event.data.length}`);
