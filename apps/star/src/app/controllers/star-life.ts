@@ -5,6 +5,7 @@ import { Browser, CDPSession } from 'puppeteer';
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { PassThrough } from 'stream';
 import { browserConfig } from '../constants/puppeteer';
+import PATH, { resolve } from 'path';
 
 const logger = getLogger();
 const frames = [];
@@ -19,7 +20,10 @@ export const testLife = async () => {
   });
   browser = await getBrowser();
   const page = await browser.newPage();
-  const recorder = new PuppeteerScreenRecorder(page);
+
+  const recorder = new PuppeteerScreenRecorder(page, {
+    ffmpeg_Path: './ffmpeg.exe',
+  });
   await recorder.start('output.mp4');
 
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
