@@ -10,6 +10,7 @@
   "private": true,
   "dependencies": {
     "puppeteer": "^14.3.0",
+    "puppeteer-screen-recorder": "^2.0.2",
     "puppeteer-stream": "^2.1.1",
     "tslib": "^2.3.0",
     "winston": "^3.7.2"
