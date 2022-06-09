@@ -31,6 +31,7 @@ export const testLife = async () => {
   });
   await sleep({ ms: 20000 });
   await session.send('Page.stopScreencast');
+  await session.detach();
   await browser.close();
 };
 
