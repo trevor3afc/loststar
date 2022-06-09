@@ -18,13 +18,13 @@ export const initBrowserInstance = async ({
 }: {
   config: browserConnectionConfigs;
 }) => {
-  const browser = await puppeteer.launch(config);
-  return browser;
+  browser = await puppeteer.launch(config);
+  //return browser;
 };
 
 export const getBrowser = async () => {
   if (!browser) {
-    browser = await initBrowserInstance({
+    await initBrowserInstance({
       config: {
         headless: false,
         slowMo: 100,
