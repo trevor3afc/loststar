@@ -19,10 +19,10 @@ export const testLife = async () => {
   });
   browser = await getBrowser();
   const page = await browser.newPage();
-  const recorder = new PuppeteerScreenRecorder(page);
-  const pipeStream = new PassThrough();
-  await recorder.startStream(pipeStream);
-  await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  //const recorder = new PuppeteerScreenRecorder(page);
+  //const pipeStream = new PassThrough();
+  //await recorder.startStream(pipeStream);
+  //await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   //await page.keyboard.press('k');
   await sleep({ ms: 20000 });
   await browser.close();
