@@ -13,7 +13,7 @@ export const browserConfig: browserConnectionConfigs = {
 export const StreamConfig = {
   followNewTab: true,
   fps: 25,
-  ffmpeg_Path: '<path of ffmpeg_path>' || null,
+  ffmpeg_Path: null,
   videoFrame: {
     width: 1024,
     height: 768,
