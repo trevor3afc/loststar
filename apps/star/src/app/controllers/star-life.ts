@@ -22,6 +22,8 @@ export const testLife = async () => {
   const page = await browser.newPage();
 
   const recorder = new PuppeteerScreenRecorder(page, {
+    followNewTab: true,
+    fps: 25,
     ffmpeg_Path: './ffmpeg.exe',
   });
   await recorder.start('output.mp4');
