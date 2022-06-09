@@ -60,7 +60,7 @@ const playFrames = async () => {
 };
 
 export const runStarLife = async () => {
-  playFrames();
+  //playFrames();
   await starPrepare();
   await testLife();
 
