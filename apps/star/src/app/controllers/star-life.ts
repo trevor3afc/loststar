@@ -26,6 +26,7 @@ export const testLife = async () => {
   await session.send('Page.startScreencast');
   session.on('Page.screencastFrame', (event) => {
     event.data; // Base64 encoded frame
+    console.log(`push:event.data.length:${event.data.length}`);
     frames.push(event.data);
   });
   await sleep({ ms: 20000 });
