@@ -1,4 +1,5 @@
 import { getLogger } from '@loststar/helper/logger';
+import { benchmarkEnd, benchmarkStart, sleep } from '@loststar/utils/common';
 
 const logger = getLogger();
 export const main = async () => {
@@ -6,5 +7,13 @@ export const main = async () => {
 };
 
 export const runStarLife = async () => {
+  benchmarkStart({
+    label: 'runStarLife',
+  });
   logger.info('star-life:runLife');
+  await sleep({ ms: 3000 });
+  benchmarkEnd({
+    label: 'endStarLife',
+  });
+  await runStarLife();
 };
