@@ -17,8 +17,8 @@ export const testLife = async () => {
   });
   browser = await getBrowser();
   const page = await browser.newPage();
-  await page.goto('https://google.com');
-  await sleep({ ms: 2000 });
+  await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  await sleep({ ms: 20000 });
   await browser.close();
 };
 
