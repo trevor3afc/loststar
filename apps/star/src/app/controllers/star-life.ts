@@ -19,24 +19,27 @@ export const testLife = async () => {
   });
   browser = await getBrowser();
   const page = await browser.newPage();
+  const recorder = new PuppeteerScreenRecorder(page);
+  await recorder.start('output.mp4');
 
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   await page.keyboard.press('k');
-  const session = await page.target().createCDPSession();
-  await session.send('Page.startScreencast', {
-    format: 'png',
-    maxWidth: 1920,
-    maxHeight: 1080,
-  });
+  //   const session = await page.target().createCDPSession();
+  //   await session.send('Page.startScreencast', {
+  //     format: 'png',
+  //     maxWidth: 1920,
+  //     maxHeight: 1080,
+  //   });
 
-  session.on('Page.screencastFrame', (event) => {
-    event.data; // Base64 encoded frame
-    console.log(`push:event.data.length:${event.data.length}`);
-    frames.push(event.data);
-  });
+  //   session.on('Page.screencastFrame', (event) => {
+  //     event.data; // Base64 encoded frame
+  //     console.log(`push:event.data.length:${event.data.length}`);
+  //     frames.push(event.data);
+  //   });
   await sleep({ ms: 20000 });
-  await session.send('Page.stopScreencast');
-  await session.detach();
+  //await session.send('Page.stopScreencast');
+  //await session.detach();
+  await recorder.stop();
   await browser.close();
 };
 
