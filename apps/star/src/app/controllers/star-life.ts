@@ -28,17 +28,23 @@ export const testLife = async () => {
 
   const recorder = new PuppeteerScreenRecorder(page, {
     followNewTab: true,
-    fps: 60,
+    fps: 25,
     ffmpeg_Path: './ffmpeg.exe',
+    videoFrame: {
+      width: 640,
+      height: 480,
+    },
+    //aspectRatio: '4:3',
   });
   await recorder.startStream(pipeStream);
   //await recorder.start('output.mp4');
-  await sleep({ ms: 1000 });
 
   ffcmd
     .setFfmpegPath('./ffmpeg.exe')
     .input(pipeStream)
-    .inputFPS(60)
+    .inputOptions(['-fflags nobuffer'])
+    .videoCodec('libx264')
+    .inputFPS(25)
     .size('640x480')
     .autopad()
     .on('start', (ffcmd) => {
@@ -52,10 +58,12 @@ export const testLife = async () => {
       });
     })
     .format('flv')
+    .outputOptions(['-fflags nobuffer', '-tune zerolatency'])
     .output('rtmp://localhost:1935/live/output')
     .run();
-
+  await sleep({ ms: 1000 });
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  await sleep({ ms: 1000 });
   await page.keyboard.press('k');
   //   const session = await page.target().createCDPSession();
   //   await session.send('Page.startScreencast', {
@@ -69,9 +77,10 @@ export const testLife = async () => {
   //     console.log(`push:event.data.length:${event.data.length}`);
   //     frames.push(event.data);
   //   });
-  await sleep({ ms: 20000 });
+  await sleep({ ms: 1000 * 60 * 5 });
   //await session.send('Page.stopScreencast');
   //await session.detach();
+
   await recorder.stop();
   await browser.close();
 };

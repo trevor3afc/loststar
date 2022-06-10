@@ -1,13 +1,13 @@
 import { browserConnectionConfigs } from '@loststar/helper/puppeteer';
 
 export const browserConfig: browserConnectionConfigs = {
-  headless: true,
+  headless: false,
   slowMo: 100,
   defaultViewport: {
-    width: 1920,
-    height: 1080,
+    width: 640,
+    height: 480,
   },
-  args: ['--window-size=1920,1080'],
+  args: ['--window-size=640,480'],
 };
 
 export const StreamConfig = {
@@ -15,8 +15,7 @@ export const StreamConfig = {
   fps: 25,
   ffmpeg_Path: null,
   videoFrame: {
-    width: 1024,
-    height: 768,
+    width: 640,
+    height: 480,
   },
-  aspectRatio: '4:3',
 };
