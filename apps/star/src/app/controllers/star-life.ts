@@ -6,6 +6,7 @@ import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { PassThrough } from 'stream';
 import { browserConfig } from '../constants/puppeteer';
 import PATH, { resolve } from 'path';
+import ffmpeg, { FfmpegCommandOptions } from 'fluent-ffmpeg';
 
 const logger = getLogger();
 const frames = [];
@@ -15,6 +16,10 @@ export const starPrepare = async () => {
 };
 let browser: Browser;
 export const testLife = async () => {
+  const ffOptions: FfmpegCommandOptions = {};
+  const ffcmd = ffmpeg(ffOptions);
+
+  const pipeStream = new PassThrough();
   await initBrowserInstance({
     config: browserConfig,
   });
@@ -23,10 +28,32 @@ export const testLife = async () => {
 
   const recorder = new PuppeteerScreenRecorder(page, {
     followNewTab: true,
-    fps: 25,
+    fps: 60,
     ffmpeg_Path: './ffmpeg.exe',
   });
-  await recorder.start('output.mp4');
+  await recorder.startStream(pipeStream);
+  //await recorder.start('output.mp4');
+  await sleep({ ms: 1000 });
+
+  ffcmd
+    .setFfmpegPath('./ffmpeg.exe')
+    .input(pipeStream)
+    .inputFPS(60)
+    .size('640x480')
+    .autopad()
+    .on('start', (ffcmd) => {
+      console.log({
+        ffcmd,
+      });
+    })
+    .on('error', (err) => {
+      console.log({
+        err,
+      });
+    })
+    .format('flv')
+    .output('rtmp://localhost:1935/live/output')
+    .run();
 
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   await page.keyboard.press('k');

@@ -25,6 +25,7 @@
     "@nrwl/node": "^14.2.2",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "14.2.2",
+    "@types/fluent-ffmpeg": "^2.1.20",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
     "@types/node-media-server": "^2.3.1",
