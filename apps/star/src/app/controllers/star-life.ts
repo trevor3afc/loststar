@@ -5,7 +5,6 @@ import { Browser, CDPSession } from 'puppeteer';
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { PassThrough } from 'stream';
 import { browserConfig } from '../constants/puppeteer';
-import PATH, { resolve } from 'path';
 import ffmpeg, { FfmpegCommandOptions } from 'fluent-ffmpeg';
 
 const logger = getLogger();
@@ -64,7 +63,7 @@ export const testLife = async () => {
   await sleep({ ms: 1000 });
   await page.goto('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
   await sleep({ ms: 1000 });
-  await page.keyboard.press('k');
+  //await page.keyboard.press('k');
   //   const session = await page.target().createCDPSession();
   //   await session.send('Page.startScreencast', {
   //     format: 'png',
