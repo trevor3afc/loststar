@@ -1,7 +1,7 @@
 import { browserConnectionConfigs } from '@loststar/helper/puppeteer';
 
 export const browserConfig: browserConnectionConfigs = {
-  headless: true,
+  headless: false,
   slowMo: 100,
   defaultViewport: {
     width: 640,
