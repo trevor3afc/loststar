@@ -1,7 +1,7 @@
 import { getLogger } from '@loststar/helper/logger';
 import { getBrowser, initBrowserInstance } from '@loststar/helper/puppeteer';
 import { benchmarkEnd, benchmarkStart, sleep } from '@loststar/utils/common';
-import { Browser, CDPSession } from 'puppeteer';
+import { Browser } from 'puppeteer';
 import { PuppeteerScreenRecorder } from 'puppeteer-screen-recorder';
 import { PassThrough } from 'stream';
 import { browserConfig } from '../constants/puppeteer';
