@@ -84,14 +84,14 @@ export const testLife = async () => {
 };
 
 export const testWebRtc = async () => {
-  const config = {
-    iceServer: [
+  const config: RTCConfiguration = {
+    iceServers: [
       {
-        urls: 'localhost:',
+        urls: 'localhost:3478',
       },
     ],
   };
-  const pc = new RTCPeerConnection();
+  const pc = new RTCPeerConnection(config);
   console.log({
     pc,
   });
