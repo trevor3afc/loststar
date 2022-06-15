@@ -1,13 +1,21 @@
 version: '3.8'
 services:
-  star:
-    container_name: star
-    build:
-      context: .
-      dockerfile: ./Dockerfile.star
-    image: star
+  #star:
+  #container_name: star
+  #  build:
+  #    context: .
+  #    dockerfile: ./Dockerfile.star
+  #  image: star
+  #  ports:
+  #    - '3000:3000'
+  #  restart: always
+  coturn:
+    container_name: coturn
+    image: coturn:alpine
     ports:
-      - '3000:3000'
+      - '3478:3478'
+      - '5349:5349'
+      - '49160-49200:49160-49200'
     restart: always
 
 networks:
