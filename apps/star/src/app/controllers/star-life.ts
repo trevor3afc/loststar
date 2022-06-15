@@ -17,7 +17,6 @@ let browser: Browser;
 export const testLife = async () => {
   const ffOptions: FfmpegCommandOptions = {};
   const ffcmd = ffmpeg(ffOptions);
-
   const pipeStream = new PassThrough();
   await initBrowserInstance({
     config: browserConfig,
@@ -84,35 +83,21 @@ export const testLife = async () => {
   await browser.close();
 };
 
+export const testWebRtc = async () => {
+  const pc = new RTCPeerConnection();
+  console.log({
+    pc,
+  });
+};
+
 export const starMain = async () => {
   logger.info('star-life:main');
 };
 
-const playFrames = async () => {
-  let play = true;
-  let counter = 0;
-  while (play) {
-    //const nextFrame = frames.shift();
-    counter++;
-    console.log({
-      counter,
-      length: frames.length,
-    });
-
-    if (counter > 20000) {
-      play = false;
-    }
-    await sleep({
-      ms: 500,
-    });
-  }
-};
-
 export const runStarLife = async () => {
-  //playFrames();
   await starPrepare();
-  await testLife();
-
+  //await testLife();
+  await testWebRtc();
   benchmarkStart({
     label: 'starLife',
   });
