@@ -93,7 +93,7 @@ export const testWebRtc = async () => {
   };
   const pc = new RTCPeerConnection(config);
   console.log({
-    pc,
+    //pc,
   });
 };
 
