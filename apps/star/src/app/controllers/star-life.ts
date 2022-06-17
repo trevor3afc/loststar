@@ -7,6 +7,8 @@ import { PassThrough } from 'stream';
 import { browserConfig } from '../constants/puppeteer';
 import ffmpeg, { FfmpegCommandOptions } from 'fluent-ffmpeg';
 
+import SimplePeer from 'simple-peer';
+import wrtc from 'wrtc';
 const logger = getLogger();
 const frames = [];
 export const starPrepare = async () => {
@@ -15,6 +17,16 @@ export const starPrepare = async () => {
 };
 let browser: Browser;
 export const testLife = async () => {
+  const peerA = new SimplePeer({
+    initiator: true,
+    config: {
+      iceServers: [{ urls: 'stun:localhost:3478' }],
+    },
+    wrtc: wrtc,
+  });
+  console.log({
+    peerA,
+  });
   const ffOptions: FfmpegCommandOptions = {};
   const ffcmd = ffmpeg(ffOptions);
   const pipeStream = new PassThrough();
@@ -83,31 +95,14 @@ export const testLife = async () => {
   await browser.close();
 };
 
-export const testWebRtc = async () => {
-  const config: RTCConfiguration = {
-    iceServers: [
-      // {
-      //   urls: 'localhost:3478',
-      // },
-      {
-        urls: 'stun:stun.l.google.com:19302',
-      },
-    ],
-  };
-  //const pc = new RTCPeerConnection(config);
-  console.log({
-    //pc,
-  });
-};
-
 export const starMain = async () => {
   logger.info('star-life:main');
 };
 
 export const runStarLife = async () => {
   await starPrepare();
-  //await testLife();
-  await testWebRtc();
+  await testLife();
+  //await testWebRtc();
   benchmarkStart({
     label: 'starLife',
   });
