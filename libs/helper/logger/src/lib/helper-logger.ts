@@ -38,7 +38,8 @@ export const initLogger = ({ colors }: { colors: Record<string, string> }) => {
 };
 
 const getLogFunction =
-  (level: EAppLogLevel) => (message: string, data?: Record<string, unknown>) => {
+  (level: EAppLogLevel) =>
+  (message: string, data?: Record<string, unknown>) => {
     if (!instance) {
       throw new Error(
         'Logger instance has not been initialized. Call init() before logging.'
@@ -48,24 +49,14 @@ const getLogFunction =
     instance[level](message, data);
   };
 
-const error = getLogFunction(EAppLogLevel.error);
-const warn = getLogFunction(EAppLogLevel.warn);
-const info = getLogFunction(EAppLogLevel.info);
-const http = getLogFunction(EAppLogLevel.http);
-const verbose = getLogFunction(EAppLogLevel.verbose);
-const debug = getLogFunction(EAppLogLevel.debug);
-const silly = getLogFunction(EAppLogLevel.silly);
-
 const LoggerMapper = {
-  []
-}
-
-export const logger = {
-  error,
-  warn,
-  info,
-  http,
-  verbose,
-  debug,
-  silly,
+  [EAppLogLevel.error]: getLogFunction(EAppLogLevel.error),
+  [EAppLogLevel.warn]: getLogFunction(EAppLogLevel.warn),
+  [EAppLogLevel.info]: getLogFunction(EAppLogLevel.info),
+  [EAppLogLevel.http]: getLogFunction(EAppLogLevel.http),
+  [EAppLogLevel.verbose]: getLogFunction(EAppLogLevel.verbose),
+  [EAppLogLevel.debug]: getLogFunction(EAppLogLevel.debug),
+  [EAppLogLevel.silly]: getLogFunction(EAppLogLevel.silly),
 };
+
+export const logger = LoggerMapper;

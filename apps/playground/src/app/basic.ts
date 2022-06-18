@@ -5,7 +5,10 @@ import { LogLevelColorHexs } from '@loststar/utils/makeup';
 export const colorPlay = () => {
   const sampleLog = 'sample log  🎨🎨🎨!!!';
   for (const item in LogLevelColorHexs) {
-    logger.error(sampleLog);
+    console.log({
+      item,
+    });
+    //logger[item](sampleLog);
   }
 };
 
