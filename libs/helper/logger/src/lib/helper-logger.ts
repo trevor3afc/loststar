@@ -19,7 +19,7 @@ export const initLogger = ({
 }: {
   levels: winston.LoggerOptions['levels'];
 }) => {
-  return winston.createLogger({
+  instance = winston.createLogger({
     levels,
     format: winston.format.json(),
     defaultMeta: { service: 'unknown-service' },
