@@ -6,7 +6,7 @@ export const colorPlay = () => {
   const sampleLog = 'sample log 🎨🎨🎨!!!';
   for (const item in LogLevelColorHexs) {
     logger[item](sampleLog, {
-      level: item,
+      debug: 123123,
     });
   }
 };
