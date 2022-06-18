@@ -26,12 +26,13 @@ export const initLogger = ({
   instance = winston.createLogger({
     level,
     //format: winston.format.json(),
+
+    format: winston.format.combine(
+      winston.format.timestamp(),
+      winston.format.simple()
+    ),
     defaultMeta: { service: 'unknown-service' },
-    transports: [
-      new winston.transports.Console({
-        format: winston.format.simple(),
-      }),
-    ],
+    transports: [new winston.transports.Console()],
   });
 };
 
