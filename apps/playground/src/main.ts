@@ -2,7 +2,7 @@ import { initLogger } from '@loststar/helper/logger';
 import { getLogLevelColors } from '@loststar/utils/makeup';
 import { startBasic } from './app/basic';
 import { format } from 'winston';
-const { combine, splat, timestamp, printf } = format;
+const { combine, splat, timestamp, printf, metadata } = format;
 const appName = 'playground';
 const appInitializer = async () => {
   const appLogFormatA = printf(({ level, message, timestamp, ...metadata }) => {
@@ -14,6 +14,7 @@ const appInitializer = async () => {
   });
   const appLogFormatB = combine(
     timestamp(),
+    metadata(),
     printf((info) => {
       const typedInfo = info;
       const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
