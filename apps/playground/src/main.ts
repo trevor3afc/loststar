@@ -26,9 +26,10 @@ const appInitializer = async () => {
         str: message,
         level: getLogLevelColors()[level],
       });
-      return `${dateTime} [${appName}] ${level.toUpperCase()}: ${msg} ${
-        data && JSON.stringify(data)
-      }`;
+
+      const logData =
+        data && typeof data === 'object' ? JSON.stringify(data) : '';
+      return `${dateTime} [${appName}] ${level.toUpperCase()}: ${msg} ${logData}`;
     })
   );
   initLogger({
