@@ -3,7 +3,9 @@ import { startBasic } from './app/basic';
 
 const appInitializer = async () => {
   initLogger({
-    levels: {},
+    colors: {
+      error: 'red',
+    },
   });
 };
 

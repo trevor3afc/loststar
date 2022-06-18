@@ -14,13 +14,9 @@ export type AppLogLevel =
 
 let instance: winston.Logger;
 
-export const initLogger = ({
-  levels,
-}: {
-  levels: winston.LoggerOptions['levels'];
-}) => {
+export const initLogger = ({ colors }: { colors: Record<string, string> }) => {
+  winston.addColors(colors);
   instance = winston.createLogger({
-    levels,
     format: winston.format.json(),
     defaultMeta: { service: 'unknown-service' },
     transports: [
