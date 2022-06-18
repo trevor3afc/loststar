@@ -21,17 +21,10 @@ const appInitializer = async () => {
     }),
     printf((info) => {
       const typedInfo = info;
-      console.log({
-        info,
-      });
       const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
       const msg = logColor({
         str: message,
         level: getLogLevelColors()[level],
-      });
-
-      console.log({
-        dataLength: Object.keys(data).length,
       });
       const logData = Object.keys(data).length >= 1 ? JSON.stringify(data) : '';
       return `${dateTime} [${appName}] ${level.toUpperCase()}: ${msg} ${logData}`;
