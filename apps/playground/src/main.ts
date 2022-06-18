@@ -14,7 +14,9 @@ const appInitializer = async () => {
   });
   const appLogFormatB = combine(
     timestamp(),
-    metadata(),
+    metadata({
+      fillExcept: ['message', 'level', 'timestamp'],
+    }),
     printf((info) => {
       const typedInfo = info;
       const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
