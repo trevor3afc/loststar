@@ -16,21 +16,13 @@ export enum EAppLogLevel {
 let instance: winston.Logger;
 
 export const initLogger = ({
-  colors,
   level = 'info',
 }: {
-  colors: Record<string, string>;
   level?: winston.LoggerOptions['level'];
 }) => {
-  winston.addColors(colors);
   instance = winston.createLogger({
     level,
-    //format: winston.format.json(),
-
-    format: winston.format.combine(
-      winston.format.timestamp(),
-      winston.format.simple()
-    ),
+    format: winston.format.combine(winston.format.simple()),
     defaultMeta: { service: 'unknown-service' },
     transports: [new winston.transports.Console()],
   });
