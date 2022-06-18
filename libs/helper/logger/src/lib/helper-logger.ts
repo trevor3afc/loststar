@@ -25,11 +25,11 @@ export const initLogger = ({
   winston.addColors(colors);
   instance = winston.createLogger({
     level,
-    format: winston.format.json(),
+    //format: winston.format.json(),
     defaultMeta: { service: 'unknown-service' },
     transports: [
       new winston.transports.Console({
-        format: winston.format.splat(),
+        format: winston.format.simple(),
       }),
     ],
   });
