@@ -17,5 +17,7 @@ export const logColor = ({
   str: string;
   level: LogLevelColorHexs;
 }) => {
-  return chalk.hex(level)(str);
+  const color = chalk.hex(level);
+  //const output = `${chalk.hex('#FB9966')(str)}`;
+  //return chalk.hex(level)(str);
 };
