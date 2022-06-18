@@ -46,7 +46,7 @@ export const testLife = async () => {
     },
     //aspectRatio: '4:3',
   });
-  peerA.write(pipeStream);
+
   await recorder.startStream(pipeStream);
   //await recorder.start('output.mp4');
 
