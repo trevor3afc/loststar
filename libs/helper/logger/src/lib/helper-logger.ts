@@ -25,7 +25,7 @@ export const initLogger = ({
   instance = winston.createLogger({
     level,
     format: format,
-    defaultMeta: { service: 'unknown-service' },
+    defaultMeta: { location: 'unknown' },
     transports: [new winston.transports.Console()],
   });
 };
