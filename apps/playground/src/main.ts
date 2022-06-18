@@ -13,7 +13,9 @@ const appInitializer = async () => {
     return msg;
   });
   const appLogFormatB = combine(
-    timestamp(),
+    timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss',
+    }),
     metadata({
       fillExcept: ['message', 'level', 'timestamp'],
     }),
