@@ -4,8 +4,18 @@ export enum LogLevelColorHexs {
   error = '#CB4042',
   warn = '#DDD23B',
   info = '#2E5C6E',
-  http = '#0000ff',
-  verbose = '#000000',
-  debug = '#0000ff',
-  silly = '#000000',
+  http = '#787878',
+  verbose = '#8B81C3',
+  debug = '#86C166',
+  silly = '#FB9966',
 }
+
+export const logColor = ({
+  str,
+  level,
+}: {
+  str: string;
+  level: LogLevelColorHexs;
+}) => {
+  return chalk.hex(level)(str);
+};
