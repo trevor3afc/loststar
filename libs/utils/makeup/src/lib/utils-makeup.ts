@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 export enum LogLevelColorHexs {
   ERROR = '#CB4042',
@@ -17,9 +17,6 @@ export const logColor = ({
   str: string;
   level: LogLevelColorHexs;
 }) => {
-  console.log({
-    chalk,
-  });
   //const color = chalk.green('#FFA500');
   //const output = `${chalk.hex('#FB9966')(str)}`;
   //return chalk.hex(level)(str);
