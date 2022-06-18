@@ -12,6 +12,16 @@ export type AppLogLevel =
   | 'debug'
   | 'silly';
 
+export enum EAppLogLevel {
+  error = 'error',
+  warn = 'warn',
+  info = 'info',
+  http = 'http',
+  verbose = 'verbose',
+  debug = 'debug',
+  silly = 'silly',
+}
+
 let instance: winston.Logger;
 
 export const initLogger = ({ colors }: { colors: Record<string, string> }) => {
@@ -28,7 +38,7 @@ export const initLogger = ({ colors }: { colors: Record<string, string> }) => {
 };
 
 const getLogFunction =
-  (level: AppLogLevel) => (message: string, data?: Record<string, unknown>) => {
+  (level: EAppLogLevel) => (message: string, data?: Record<string, unknown>) => {
     if (!instance) {
       throw new Error(
         'Logger instance has not been initialized. Call init() before logging.'
@@ -38,13 +48,17 @@ const getLogFunction =
     instance[level](message, data);
   };
 
-const error = getLogFunction('error');
-const warn = getLogFunction('warn');
-const info = getLogFunction('info');
-const http = getLogFunction('http');
-const verbose = getLogFunction('verbose');
-const debug = getLogFunction('debug');
-const silly = getLogFunction('silly');
+const error = getLogFunction(EAppLogLevel.error);
+const warn = getLogFunction(EAppLogLevel.warn);
+const info = getLogFunction(EAppLogLevel.info);
+const http = getLogFunction(EAppLogLevel.http);
+const verbose = getLogFunction(EAppLogLevel.verbose);
+const debug = getLogFunction(EAppLogLevel.debug);
+const silly = getLogFunction(EAppLogLevel.silly);
+
+const LoggerMapper = {
+  []
+}
 
 export const logger = {
   error,
