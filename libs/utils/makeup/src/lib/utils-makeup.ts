@@ -10,6 +10,17 @@ export enum LogLevelColorHexs {
   silly = '#FB9966',
 }
 
+export const getLogLevelColors = () => {
+  let colors = {};
+  for (const item in LogLevelColorHexs) {
+    colors = {
+      ...colors,
+      [item]: LogLevelColorHexs[item as keyof typeof LogLevelColorHexs],
+    };
+  }
+  return colors;
+};
+
 export const logColor = ({
   str,
   level,
