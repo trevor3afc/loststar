@@ -1,4 +1,4 @@
-import winston from 'winston';
+import winston, { format } from 'winston';
 
 export function helperLogger(): string {
   return 'helper-logger';
@@ -17,12 +17,14 @@ let instance: winston.Logger;
 
 export const initLogger = ({
   level = 'info',
+  format = winston.format.combine(winston.format.simple()),
 }: {
   level?: winston.LoggerOptions['level'];
+  format?: winston.LoggerOptions['format'];
 }) => {
   instance = winston.createLogger({
     level,
-    format: winston.format.combine(winston.format.simple()),
+    format: format,
     defaultMeta: { service: 'unknown-service' },
     transports: [new winston.transports.Console()],
   });
