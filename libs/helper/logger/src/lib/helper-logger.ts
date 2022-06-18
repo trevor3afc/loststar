@@ -27,11 +27,11 @@ export const initLogger = ({
     level,
     format: winston.format.json(),
     defaultMeta: { service: 'unknown-service' },
-    // transports: [
-    //   new winston.transports.Console({
-    //     format: winston.format.simple(),
-    //   }),
-    // ],
+    transports: [
+      new winston.transports.Console({
+        format: winston.format.splat(),
+      }),
+    ],
   });
 };
 
