@@ -3,7 +3,7 @@ import winston from 'winston';
 export function helperLogger(): string {
   return 'helper-logger';
 }
-type AppLogLevel =
+export type AppLogLevel =
   | 'error'
   | 'warn'
   | 'info'
