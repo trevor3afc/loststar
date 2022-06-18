@@ -9,6 +9,7 @@
   },
   "private": true,
   "dependencies": {
+    "chalk": "^5.0.1",
     "fluent-ffmpeg": "^2.1.2",
     "node-media-server": "^2.3.12",
     "puppeteer": "^14.3.0",
