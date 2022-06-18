@@ -3,9 +3,11 @@ import { logger } from '@loststar/helper/logger';
 import { LogLevelColorHexs } from '@loststar/utils/makeup';
 
 export const colorPlay = () => {
-  const sampleLog = 'sample log  🎨🎨🎨!!!';
+  const sampleLog = 'sample log 🎨🎨🎨!!!';
   for (const item in LogLevelColorHexs) {
-    logger[item](sampleLog);
+    logger[item](sampleLog, {
+      level: item,
+    });
   }
 };
 
