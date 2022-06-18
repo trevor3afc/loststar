@@ -7,6 +7,7 @@
     "helper-logger": "libs/helper/logger",
     "helper-puppeteer": "libs/helper/puppeteer",
     "play-station": "apps/play-station",
+    "playground": "apps/playground",
     "star": "apps/star",
     "utils--common": "libs/utils/common"
   }
