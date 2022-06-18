@@ -1,13 +1,13 @@
 import chalk from 'chalk';
 
 export enum LogLevelColorHexs {
-  ERROR = '#CB4042',
-  WARN = '#DDD23B',
-  INFO = '#2E5C6E',
-  HTTP = '#787878',
-  VERBOSE = '#8B81C3',
-  DEBUG = '#86C166',
-  SILLY = '#FB9966',
+  error = '#CB4042',
+  warn = '#DDD23B',
+  info = '#2E5C6E',
+  http = '#787878',
+  verbose = '#8B81C3',
+  debug = '#86C166',
+  silly = '#FB9966',
 }
 
 export const logColor = ({
