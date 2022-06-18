@@ -12,15 +12,19 @@ const appInitializer = async () => {
     }
     return msg;
   });
-  const appLogFormatB = printf((info) => {
-    const { timestamp: dateTime, level, message, metadata: data } = info;
-    return `${dateTime} [${appName}] ${level.toUpperCase()}: ${message} ${
-      data && JSON.stringify(data)
-    }`;
-  });
+  const appLogFormatB = combine(
+    timestamp(),
+    printf((info) => {
+      const typedInfo = info;
+      const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
+      return `${dateTime} [${appName}] ${level.toUpperCase()}: ${message} ${
+        data && JSON.stringify(data)
+      }`;
+    })
+  );
   initLogger({
     level: 'silly',
-    format: combine(appLogFormatB),
+    format: appLogFormatB,
   });
 };
 
