@@ -3,6 +3,16 @@ import winston from 'winston';
 export function helperLogger(): string {
   return 'helper-logger';
 }
+type AppLogLevel =
+  | 'error'
+  | 'warn'
+  | 'info'
+  | 'http'
+  | 'verbose'
+  | 'debug'
+  | 'silly';
+
+let instance: winston.Logger;
 
 export const initLogger = ({
   levels,
@@ -21,15 +31,31 @@ export const initLogger = ({
   });
 };
 
-//export const logger = createLogger();
-type Logger = winston.Logger & {
-  initialized: boolean;
-};
+const getLogFunction =
+  (level: AppLogLevel) => (message: string, data?: Record<string, unknown>) => {
+    if (!instance) {
+      throw new Error(
+        'Logger instance has not been initialized. Call init() before logging.'
+      );
+    }
 
-export const logger: Logger => {
-  //check logger is initialized
-  if (!logger.initialized) {
-    throw new Error('logger is not initialized');
-  }
-  return initLogger({ levels: winston.config.syslog.levels });
+    instance[level](message, data);
+  };
+
+const error = getLogFunction('error');
+const warn = getLogFunction('warn');
+const info = getLogFunction('info');
+const http = getLogFunction('http');
+const verbose = getLogFunction('verbose');
+const debug = getLogFunction('debug');
+const silly = getLogFunction('silly');
+
+export const logger = {
+  error,
+  warn,
+  info,
+  http,
+  verbose,
+  debug,
+  silly,
 };
