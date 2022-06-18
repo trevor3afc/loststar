@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "common-makeup": "libs/common/makeup",
     "core--config": "libs/core/config",
     "core--debug": "libs/core/debug",
     "helper-logger": "libs/helper/logger",
