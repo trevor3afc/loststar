@@ -4,11 +4,9 @@ export function helperLogger(): string {
   return 'helper-logger';
 }
 
-let logger: winston.Logger;
-
-export const initLogger = async () => {
-  logger = winston.createLogger({
-    level: 'info',
+const createLogger = () => {
+  return winston.createLogger({
+    level: 'debug',
     format: winston.format.json(),
     defaultMeta: { service: 'unknown-service' },
     transports: [
@@ -17,12 +15,6 @@ export const initLogger = async () => {
       }),
     ],
   });
-  return logger;
 };
 
-export const getLogger = () => {
-  if (!logger) {
-    initLogger();
-  }
-  return logger;
-};
+export const logger = createLogger();
