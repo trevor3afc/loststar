@@ -3,10 +3,9 @@ import { logger } from '@loststar/helper/logger';
 import { LogLevelColorHexs } from '@loststar/utils/makeup';
 
 export const colorPlay = () => {
+  const sampleLog = 'sample log  🎨🎨🎨!!!';
   for (const item in LogLevelColorHexs) {
-    console.log({
-      item,
-    });
+    logger[item](sampleLog);
   }
 };
 
@@ -15,7 +14,4 @@ export const startBasic = async () => {
     ms: 1000,
   });
   colorPlay();
-  logger.info('[basic started]', {
-    debug: true,
-  });
 };
