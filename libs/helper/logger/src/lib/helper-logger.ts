@@ -12,13 +12,6 @@ export enum EAppLogLevel {
   debug = 'debug',
   silly = 'silly',
 }
-export type PrintfArgument = {
-  level: string;
-  message: string;
-  serviceName: string;
-  timestamp: string;
-  metadata: Record<string, unknown>;
-};
 
 let instance: winston.Logger;
 

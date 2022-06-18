@@ -1,4 +1,4 @@
-import { initLogger, PrintfArgument } from '@loststar/helper/logger';
+import { initLogger } from '@loststar/helper/logger';
 import { getLogLevelColors } from '@loststar/utils/makeup';
 import { startBasic } from './app/basic';
 import { format } from 'winston';
@@ -13,8 +13,7 @@ const appInitializer = async () => {
     return msg;
   });
   const appLogFormatB = printf((info) => {
-    const typedInfo = info as PrintfArgument;
-    const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
+    const { timestamp: dateTime, level, message, metadata: data } = info;
     return `${dateTime} [${appName}] ${level.toUpperCase()}: ${message} ${
       data && JSON.stringify(data)
     }`;
