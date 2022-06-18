@@ -3,15 +3,6 @@ import winston from 'winston';
 export function helperLogger(): string {
   return 'helper-logger';
 }
-export type AppLogLevel =
-  | 'error'
-  | 'warn'
-  | 'info'
-  | 'http'
-  | 'verbose'
-  | 'debug'
-  | 'silly';
-
 export enum EAppLogLevel {
   error = 'error',
   warn = 'warn',
@@ -24,9 +15,16 @@ export enum EAppLogLevel {
 
 let instance: winston.Logger;
 
-export const initLogger = ({ colors }: { colors: Record<string, string> }) => {
+export const initLogger = ({
+  colors,
+  level = 'info',
+}: {
+  colors: Record<string, string>;
+  level?: winston.LoggerOptions['level'];
+}) => {
   winston.addColors(colors);
   instance = winston.createLogger({
+    level,
     format: winston.format.json(),
     defaultMeta: { service: 'unknown-service' },
     transports: [
