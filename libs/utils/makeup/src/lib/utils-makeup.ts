@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-export enum LogLevelColorHexs {
+export enum BaseLogLevelColorHexs {
   error = '#CB4042',
   warn = '#DDD23B',
   info = '#2E5C6E',
@@ -12,27 +12,18 @@ export enum LogLevelColorHexs {
 
 export const getLogLevelColors = (): Record<string, string> => {
   let colors = {};
-  for (const item in LogLevelColorHexs) {
+  for (const item in BaseLogLevelColorHexs) {
     colors = {
       ...colors,
-      [item]: LogLevelColorHexs[
-        item as keyof typeof LogLevelColorHexs
+      [item]: BaseLogLevelColorHexs[
+        item as keyof typeof BaseLogLevelColorHexs
       ] as string,
     };
   }
   return colors;
 };
 
-export const logColor = ({
-  str,
-  level,
-}: {
-  str: string;
-  level: LogLevelColorHexs;
-}) => {
+export const logColor = ({ str, level }: { str: string; level: string }) => {
   const color = chalk.hex(level);
   return color(str);
-  //const color = chalk.green('#FFA500');
-  //const output = `${chalk.hex('#FB9966')(str)}`;
-  //return chalk.hex(level)(str);
 };

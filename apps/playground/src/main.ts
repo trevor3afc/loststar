@@ -11,28 +11,29 @@ const appInitializer = async () => {
     logColorsType: typeof logColors,
     logColors,
   });
-  //   const appLogFormatB = combine(
-  //     timestamp({
-  //       format: 'YYYY-MM-DD HH:mm:ss',
-  //     }),
-  //     metadata({
-  //       fillExcept: ['message', 'level', 'timestamp'],
-  //     }),
-  //     printf((info) => {
-  //       const typedInfo = info;
-  //       const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
-  //       const msg = logColor({
-  //         str: message,
-  //         level: getLogLevelColors()[level],
-  //       });
-  //       const logData = Object.keys(data).length >= 1 ? JSON.stringify(data) : '';
-  //       return `${dateTime} [${appName}] ${level.toUpperCase()}: ${msg} ${logData}`;
-  //     })
-  //   );
-  //   initLogger({
-  //     level: 'silly',
-  //     format: appLogFormatB,
-  //   });
+
+  const appLogFormatB = combine(
+    timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss',
+    }),
+    metadata({
+      fillExcept: ['message', 'level', 'timestamp'],
+    }),
+    printf((info) => {
+      const typedInfo = info;
+      const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
+      const msg = logColor({
+        str: message,
+        level: getLogLevelColors()[level],
+      });
+      const logData = Object.keys(data).length >= 1 ? JSON.stringify(data) : '';
+      return `${dateTime} [${appName}] ${level.toUpperCase()}: ${msg} ${logData}`;
+    })
+  );
+  initLogger({
+    level: 'silly',
+    format: appLogFormatB,
+  });
 };
 
 (async () => {
