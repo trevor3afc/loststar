@@ -8,8 +8,10 @@ const { combine, timestamp, printf, metadata } = format;
 const appName = 'playground';
 const appInitializer = async () => {
   await startInitializer({
-    loggerConfig: {
-      ['bbb' as keyof typeof EAppLogLevel]: '#CB4042',
+    logConfig: {
+      levelColor: {
+        ['bbb' as keyof typeof EAppLogLevel]: '#CB4042',
+      },
     },
   });
 

@@ -3,13 +3,16 @@ export function coreInitializer(): string {
 }
 
 export const startInitializer = async ({
-  loggerConfig,
+  logConfig,
 }: {
-  loggerConfig: Record<string, string>;
+  logConfig: {
+    levelColor: Record<string, string>;
+  };
 }) => {
-  console.log({
-    loggerConfigType: typeof loggerConfig,
-    loggerConfig,
+  console.debug({
+    logConfigType: typeof logConfig,
+    levelColorType: typeof logConfig.levelColor,
+    logConfig,
     startInitializer: true,
   });
 };
