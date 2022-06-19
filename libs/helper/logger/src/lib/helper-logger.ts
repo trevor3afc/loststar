@@ -14,6 +14,10 @@ export enum EAppLogLevel {
 }
 
 let instance: winston.Logger;
+let LogMapper: Record<
+  string,
+  (level: string) => (message: string, data?: Record<string, unknown>) => void
+>;
 
 export const initLogger = ({
   level = 'info',
@@ -28,6 +32,9 @@ export const initLogger = ({
     //defaultMeta: { location: 'unknown' },
     transports: [new winston.transports.Console()],
   });
+  // LogMapper = {
+  //   ...BaseLoggerMapper,
+  // };
 };
 
 const getLogFunction =
@@ -42,7 +49,7 @@ const getLogFunction =
     instance[level](message, data);
   };
 
-const LoggerMapper = {
+const BaseLoggerMapper = {
   [EAppLogLevel.error]: getLogFunction(EAppLogLevel.error),
   [EAppLogLevel.warn]: getLogFunction(EAppLogLevel.warn),
   [EAppLogLevel.info]: getLogFunction(EAppLogLevel.info),
@@ -52,4 +59,4 @@ const LoggerMapper = {
   [EAppLogLevel.silly]: getLogFunction(EAppLogLevel.silly),
 };
 
-export const logger = LoggerMapper;
+export const logger = BaseLoggerMapper;

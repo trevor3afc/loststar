@@ -18,6 +18,7 @@
     "paths": {
       "@loststar/core/config": ["libs/core/config/src/index.ts"],
       "@loststar/core/debug": ["libs/core/debug/src/index.ts"],
+      "@loststar/core/initializer": ["libs/core/initializer/src/index.ts"],
       "@loststar/helper/logger": ["libs/helper/logger/src/index.ts"],
       "@loststar/helper/puppeteer": ["libs/helper/puppeteer/src/index.ts"],
       "@loststar/utils/common": ["libs/utils/common/src/index.ts"],
