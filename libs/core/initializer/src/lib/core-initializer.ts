@@ -8,6 +8,7 @@ export const startInitializer = async ({
   loggerConfig: Record<string, string>;
 }) => {
   console.log({
+    loggerConfigType: typeof loggerConfig,
     loggerConfig,
     startInitializer: true,
   });
