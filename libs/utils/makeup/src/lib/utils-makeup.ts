@@ -18,7 +18,7 @@ export const getLogLevelColors = () => {
       [item]: LogLevelColorHexs[item as keyof typeof LogLevelColorHexs],
     };
   }
-  return colors;
+  return colors as Record<string, string>;
 };
 
 export const logColor = ({
