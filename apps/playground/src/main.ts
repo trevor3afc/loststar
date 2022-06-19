@@ -7,7 +7,11 @@ const { combine, timestamp, printf, metadata } = format;
 
 const appName = 'playground';
 const appInitializer = async () => {
-  await startInitializer();
+  await startInitializer({
+    loggerConfig: {
+      error: '#CB4042',
+    },
+  });
 
   //   const logColors = getBaseLogLevelColors();
   //   console.log({
