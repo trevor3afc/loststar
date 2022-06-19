@@ -11,14 +11,16 @@ export enum LogLevelColorHexs {
 }
 
 export const getLogLevelColors = () => {
-  let colors = {};
+  let colors = {} as Record<string, string>;
   for (const item in LogLevelColorHexs) {
     colors = {
       ...colors,
-      [item]: LogLevelColorHexs[item as keyof typeof LogLevelColorHexs],
+      [item]: LogLevelColorHexs[
+        item as keyof typeof LogLevelColorHexs
+      ] as string,
     };
   }
-  return colors as Record<string, string>;
+  return colors;
 };
 
 export const logColor = ({
