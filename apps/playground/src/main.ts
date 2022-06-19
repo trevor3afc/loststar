@@ -1,12 +1,12 @@
 import { initLogger } from '@loststar/helper/logger';
-import { getLogLevelColors, logColor } from '@loststar/utils/makeup';
+import { getBaseLogLevelColors, logColor } from '@loststar/utils/makeup';
 import { startBasic } from './app/basic';
 import { format } from 'winston';
-const { combine, splat, timestamp, printf, metadata } = format;
+const { combine, timestamp, printf, metadata } = format;
 
 const appName = 'playground';
 const appInitializer = async () => {
-  const logColors = getLogLevelColors();
+  const logColors = getBaseLogLevelColors();
   console.log({
     logColorsType: typeof logColors,
     logColors,
@@ -24,7 +24,7 @@ const appInitializer = async () => {
       const { timestamp: dateTime, level, message, metadata: data } = typedInfo;
       const msg = logColor({
         str: message,
-        level: getLogLevelColors()[level],
+        level: getBaseLogLevelColors()[level],
       });
       const logData = Object.keys(data).length >= 1 ? JSON.stringify(data) : '';
       return `${dateTime} [${appName}] ${level.toUpperCase()}: ${msg} ${logData}`;
