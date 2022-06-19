@@ -1,4 +1,4 @@
-import { initLogger } from '@loststar/helper/logger';
+import { EAppLogLevel, initLogger } from '@loststar/helper/logger';
 import { getBaseLogLevelColors, logColor } from '@loststar/utils/makeup';
 import { startBasic } from './app/basic';
 import { format } from 'winston';
@@ -9,7 +9,7 @@ const appName = 'playground';
 const appInitializer = async () => {
   await startInitializer({
     loggerConfig: {
-      error: '#CB4042',
+      ['bbb' as keyof typeof EAppLogLevel]: '#CB4042',
     },
   });
 
