@@ -10,8 +10,8 @@ export enum LogLevelColorHexs {
   silly = '#FB9966',
 }
 
-export const getLogLevelColors = () => {
-  let colors = {} as Record<string, string>;
+export const getLogLevelColors = (): Record<string, string> => {
+  let colors = {};
   for (const item in LogLevelColorHexs) {
     colors = {
       ...colors,
