@@ -46,6 +46,6 @@ const appInitializer = async () => {
 };
 
 (async () => {
-  await appInitializer();
+  //await appInitializer();
   await startBasic();
 })();
