@@ -7,6 +7,9 @@ const test1 = async () => {
     headless: false,
   });
   const page = await browser.newPage();
+  await page.evaluate(() => {
+    localStorage.setItem('token', 'example-token');
+  });
   await page.goto('https://web.whatsapp.com/');
 };
 
