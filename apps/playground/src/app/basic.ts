@@ -18,4 +18,5 @@ export const startBasic = async () => {
   // });
   //colorPlay();
   //await debug();
+  console.log('start basic');
 };
