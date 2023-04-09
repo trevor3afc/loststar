@@ -67,7 +67,6 @@ const test1 = async () => {
     userDataDir: './tmp/myChromeSession',
   });
   const page = await browser.newPage();
-  await page.goto('https://web.whatsapp.com/');
   //read cookie json
   //   for (let i = 0; i <= 1000; i++) {
   //     console.log('check');
@@ -107,6 +106,7 @@ const test1 = async () => {
       localStorage.setItem(session.key, session.value);
     }, session);
   }
+  await page.goto('https://web.whatsapp.com/');
 
   console.log({});
 };
