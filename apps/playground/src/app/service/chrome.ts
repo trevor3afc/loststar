@@ -1,3 +1,4 @@
+import { sleep } from '@loststar/utils/common';
 import puppeteer from 'puppeteer';
 
 const session1 = {
@@ -24,20 +25,19 @@ const test1 = async () => {
   });
   const page = await browser.newPage();
   await page.goto('https://web.whatsapp.com/');
-  const things = await page.evaluate(() => {
-    // set something
-    const sessionJSON = JSON.stringify({ pup: 'peteer' });
-    localStorage.setItem('session', sessionJSON);
 
-    // get it
-    const session = localStorage.getItem('session');
+  for (let i = 0; i <= 1000; i++) {
+    console.log('check');
+    await sleep({
+      ms: 1000,
+    });
+    const returnedCookie = await page.cookies();
+    console.log({
+      returnedCookie,
+    });
+  }
 
-    // return it
-    return session;
-  });
-  console.log({
-    things,
-  });
+  console.log({});
 };
 
 export const chromeService = {
