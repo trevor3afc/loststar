@@ -67,46 +67,53 @@ const test1 = async () => {
     userDataDir: './tmp/myChromeSession',
   });
   const page = await browser.newPage();
-  //read cookie json
-  //   for (let i = 0; i <= 1000; i++) {
-  //     console.log('check');
-  //     await sleep({
-  //       ms: 1000,
-  //     });
 
-  //     const localStorageData = await page.evaluate(() => {
-  //       const json = {};
-  //       for (let i = 0; i < localStorage.length; i++) {
-  //         const key = localStorage.key(i);
-  //         json[key] = localStorage.getItem(key);
-  //       }
-  //       return json;
-  //     });
-  //     console.log({
-  //       localStorageData,
-  //     });
-
-  // }
   //writecookie
-  for (const idx in session1) {
-    const key = idx;
-    const value = session1[idx];
+  //   for (const idx in session1) {
+  //     const key = idx;
+  //     const value = session1[idx];
 
-    console.log({
-      row: {
-        key,
-        value,
-      },
-    });
-    const session = {
-      key,
-      value,
-    };
-    await page.evaluate((session) => {
-      localStorage.setItem(session.key, session.value);
-    }, session);
-  }
+  //     console.log({
+  //       row: {
+  //         key,
+  //         value,
+  //       },
+  //     });
+  //     const session = {
+  //       key,
+  //       value,
+  //     };
+  //     await page.evaluate((session) => {
+  //       localStorage.setItem(session.key, session.value);
+  //     }, session);
+  //   }
+  //   const cookies = session1;
+  //   await page.setCookie(...cookies);
   await page.goto('https://web.whatsapp.com/');
+
+  //read cookie json
+  for (let i = 0; i <= 1000; i++) {
+    console.log('check');
+    await sleep({
+      ms: 1000,
+    });
+
+    // const localStorageData = await page.evaluate(() => {
+    //   const json = {};
+    //   for (let i = 0; i < localStorage.length; i++) {
+    //     const key = localStorage.key(i);
+    //     json[key] = localStorage.getItem(key);
+    //   }
+    //   return json;
+    // });
+    // console.log({
+    //   localStorageData,
+    // });
+    const cookies = await page.cookies();
+    console.log({
+      cookies,
+    });
+  }
 
   console.log({});
 };
