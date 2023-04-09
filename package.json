@@ -13,7 +13,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "moment": "^2.29.3",
     "node-media-server": "^2.3.12",
-    "puppeteer": "^14.3.0",
+    "puppeteer": "^19.8.5",
     "puppeteer-screen-recorder": "^2.0.2",
     "puppeteer-stream": "^2.1.1",
     "simple-peer": "^9.11.1",

@@ -1,6 +1,7 @@
 import { sleep } from '@loststar/utils/common';
 import { logger } from '@loststar/helper/logger';
 import { debug } from './text-img';
+import { chromeService } from './service/chrome';
 //import { BaseLogLevelColorHexs } from '@loststar/utils/makeup';
 
 export const colorPlay = () => {
@@ -18,5 +19,6 @@ export const startBasic = async () => {
   // });
   //colorPlay();
   //await debug();
+  await chromeService.test1();
   console.log('start basic');
 };
