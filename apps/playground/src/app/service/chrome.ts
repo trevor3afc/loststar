@@ -7,8 +7,19 @@ const test1 = async () => {
     headless: false,
   });
   const page = await browser.newPage();
-  await page.evaluate(() => {
-    localStorage.setItem('token', 'example-token');
+  const things = await page.evaluate(() => {
+    // set something
+    const sessionJSON = JSON.stringify({ pup: 'peteer' });
+    localStorage.setItem('session', sessionJSON);
+
+    // get it
+    const session = localStorage.getItem('session');
+
+    // return it
+    return session;
+  });
+  console.log({
+    things,
   });
   await page.goto('https://web.whatsapp.com/');
 };
