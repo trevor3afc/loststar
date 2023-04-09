@@ -99,9 +99,13 @@ const test1 = async () => {
         value,
       },
     });
-    await page.evaluate(() => {
-      localStorage.setItem(key, value);
-    });
+    const session = {
+      key,
+      value,
+    };
+    await page.evaluate((session) => {
+      localStorage.setItem(session.key, session.value);
+    }, session);
   }
 
   console.log({});
