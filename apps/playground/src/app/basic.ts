@@ -17,5 +17,5 @@ export const startBasic = async () => {
   //   ms: 1000,
   // });
   //colorPlay();
-  await debug();
+  //await debug();
 };
