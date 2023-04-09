@@ -5,6 +5,7 @@ const session1 = {};
 const test1 = async () => {
   const browser = await puppeteer.launch({
     headless: false,
+    userDataDir: './tmp/myChromeSession',
   });
   const page = await browser.newPage();
   const things = await page.evaluate(() => {
